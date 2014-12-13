@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
 import java.util.List;
@@ -27,9 +26,10 @@ public class MainActivity extends ListActivity {
 
         List<Feed> values = datasource.getAllFeeds();
         Log.e("MainActivity OnCreate", values.toString());
-        ArrayAdapter<Feed> adapter = new ArrayAdapter<Feed>(this,
-                android.R.layout.simple_list_item_1, values);
-        setListAdapter(adapter);
+        FeedListAdapter fla = new FeedListAdapter(this, R.layout.feed_list_item, values);
+        //ArrayAdapter<Feed> adapter = new ArrayAdapter<Feed>(this,
+        //        android.R.layout.simple_list_item_1, values);
+        setListAdapter(fla);
     }
 
 
@@ -69,4 +69,6 @@ public class MainActivity extends ListActivity {
     public void deleteFeed(View view) {
 
     }
+
+
 }
